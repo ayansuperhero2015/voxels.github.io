@@ -1,0 +1,199 @@
+/* === GAME SCREEN === */
+#game-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+}
+
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#game-ui {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#game-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  pointer-events: all;
+}
+
+#leave-game-btn {
+  background: rgba(30,35,64,0.9);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s;
+}
+#leave-game-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+#game-title-display {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+#player-count {
+  margin-left: auto;
+  background: rgba(30,35,64,0.9);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+
+/* Chat */
+#chat-container {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 340px;
+  pointer-events: all;
+  padding: 12px;
+}
+
+#chat-messages {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+.chat-msg {
+  background: rgba(13,15,26,0.85);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 13px;
+  backdrop-filter: blur(4px);
+  max-width: 100%;
+  word-break: break-word;
+  animation: msgSlide 0.2s ease;
+}
+@keyframes msgSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-msg .chat-sender { font-weight: 800; color: var(--accent); margin-right: 6px; }
+.chat-msg.system .chat-sender { color: var(--accent3); }
+.chat-msg.self .chat-sender { color: var(--accent2); }
+
+#chat-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+#chat-input {
+  flex: 1;
+  background: rgba(13,15,26,0.9);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 8px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  outline: none;
+  backdrop-filter: blur(4px);
+}
+#chat-input:focus { border-color: var(--accent); }
+
+#chat-send {
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#game-controls-hint {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(13,15,26,0.7);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  color: var(--text2);
+  backdrop-filter: blur(4px);
+}
+
+/* Speech Bubbles - rendered in canvas overlay */
+.speech-bubble-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.speech-bubble {
+  position: absolute;
+  background: rgba(13,15,26,0.92);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  max-width: 200px;
+  white-space: normal;
+  text-align: center;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  animation: bubbleIn 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(13,15,26,0.92);
+  border-bottom: none;
+}
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translate(-50%, calc(-100% - 10px)); }
+  to { opacity: 1; transform: translate(-50%, -100%); }
+}
+
+/* Crosshair for shooter */
+.crosshair {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; height: 20px;
+  pointer-events: none;
+}
+.crosshair::before, .crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.8);
+}
+.crosshair::before { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+.crosshair::after { width: 100%; height: 2px; top: 50%; left: 0; transform: translateY(-50%); }

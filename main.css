@@ -1,0 +1,141 @@
+/* === VOXELS MAIN CSS === */
+:root {
+  --bg: #0d0f1a;
+  --bg2: #13162a;
+  --bg3: #1a1e35;
+  --surface: #1e2340;
+  --surface2: #252b4a;
+  --accent: #6c63ff;
+  --accent2: #ff6584;
+  --accent3: #43e97b;
+  --text: #e8eaf6;
+  --text2: #9da4d4;
+  --border: #2d3461;
+  --voxbux: #ffd700;
+  --radius: 12px;
+  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+}
+.screen.active { display: flex; }
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 28px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(108,99,255,0.5); }
+.btn-primary:active { transform: translateY(0); }
+
+.btn-guest {
+  background: transparent;
+  color: var(--text2);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 28px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+.btn-guest:hover { border-color: var(--accent); color: var(--text); }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.hidden { display: none; }
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--surface2);
+  border: none;
+  color: var(--text);
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-game-img {
+  height: 180px;
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--bg3), var(--surface2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+}
+.modal-box h2 { font-size: 24px; font-weight: 900; margin-bottom: 4px; }
+.modal-made-by { color: var(--text2); font-size: 13px; margin-bottom: 12px; }
+.modal-box p { color: var(--text2); margin-bottom: 20px; line-height: 1.6; }
+.btn-play { font-size: 18px; padding: 14px; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Notification toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  z-index: 9999;
+  animation: toastIn 0.3s ease, toastOut 0.3s ease 2.5s forwards;
+  pointer-events: none;
+}
+@keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+@keyframes toastOut { to { opacity: 0; transform: translateX(-50%) translateY(20px); } }

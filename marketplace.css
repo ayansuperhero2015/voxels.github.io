@@ -1,0 +1,147 @@
+/* === MARKETPLACE === */
+.marketplace-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.marketplace-header h2 { font-size: 28px; font-weight: 900; }
+
+.voxbux-balance {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  border-radius: 12px;
+  padding: 8px 20px;
+  color: #1a0a00;
+  font-weight: 900;
+  font-size: 16px;
+  margin-left: auto;
+}
+
+.marketplace-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+}
+
+.market-tab {
+  background: transparent;
+  border: none;
+  color: var(--text2);
+  padding: 10px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  margin-bottom: -1px;
+}
+.market-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.market-tab:hover { color: var(--text); }
+
+.market-section { display: none; }
+.market-section.active { display: block; }
+
+/* VoxBux Bundles */
+.voxbux-bundles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.bundle-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.bundle-card:hover { border-color: var(--voxbux); transform: translateY(-2px); }
+.bundle-card.popular { border-color: rgba(255, 215, 0, 0.4); background: linear-gradient(135deg, var(--surface), rgba(255,215,0,0.05)); }
+
+.bundle-coins { font-size: 40px; margin-bottom: 8px; }
+.bundle-amount { font-size: 28px; font-weight: 900; color: var(--voxbux); margin-bottom: 4px; }
+.bundle-label { font-size: 12px; color: var(--text2); margin-bottom: 12px; }
+.bundle-price {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+.bundle-price:hover { background: #8b5cf6; }
+.popular-badge {
+  background: var(--voxbux);
+  color: #0d0f1a;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* Items Grid */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.shop-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.shop-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.shop-item-thumb {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  background: var(--bg2);
+}
+
+.shop-item-info { padding: 12px; }
+.shop-item-info h4 { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+.shop-item-info .item-type { font-size: 11px; color: var(--text2); margin-bottom: 8px; }
+
+.item-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.price-tag { font-size: 14px; font-weight: 900; color: var(--voxbux); }
+.price-tag.free { color: var(--accent3); }
+
+.buy-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.buy-btn:hover { background: #8b5cf6; }
+.buy-btn.owned { background: var(--accent3); color: #0d0f1a; cursor: default; }

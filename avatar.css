@@ -1,0 +1,139 @@
+/* === AVATAR EDITOR === */
+.avatar-page {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  height: calc(100vh - 60px - 64px);
+  overflow: hidden;
+}
+
+.avatar-viewport {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+#avatar-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  border-radius: 16px;
+}
+#avatar-canvas:active { cursor: grabbing; }
+
+.avatar-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.avatar-ctrl-btn {
+  background: rgba(30,35,64,0.8);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+.avatar-ctrl-btn:hover { border-color: var(--accent); }
+
+.avatar-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  height: 100%;
+  padding-right: 4px;
+}
+
+.avatar-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+.avatar-section h3 { font-size: 14px; font-weight: 800; margin-bottom: 12px; color: var(--text2); text-transform: uppercase; letter-spacing: 1px; }
+
+/* Skin Color Picker */
+.skin-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skin-swatch {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.skin-swatch.active { border-color: var(--accent); transform: scale(1.15); }
+.skin-swatch:hover { transform: scale(1.1); }
+
+/* Body Type */
+.body-types {
+  display: flex;
+  gap: 8px;
+}
+.body-type-btn {
+  flex: 1;
+  background: var(--bg2);
+  border: 2px solid var(--border);
+  color: var(--text);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+.body-type-btn.active { border-color: var(--accent); background: rgba(108,99,255,0.2); }
+.body-type-btn:hover { border-color: var(--accent); }
+
+/* Equipped Items */
+.equipped-list, .wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.equipped-slot, .wardrobe-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+}
+.equipped-slot:hover, .wardrobe-item:hover { border-color: var(--accent); }
+.wardrobe-item.equipped { border-color: var(--accent3); background: rgba(67,233,123,0.1); }
+
+.wardrobe-item .item-icon { font-size: 28px; display: block; }
+.wardrobe-item .item-name { font-size: 10px; color: var(--text2); margin-top: 4px; font-weight: 700; }
+.wardrobe-item .equipped-badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  background: var(--accent3);
+  color: #0d0f1a;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 4px;
+}
